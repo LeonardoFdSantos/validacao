@@ -75,26 +75,14 @@ services:
     restart: unless-stopped
     ports:
       - "80:80"
-      - "443:443"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./nginx/conf.d:/etc/nginx/conf.d:ro
-      - certbot_conf:/etc/letsencrypt
-      - certbot_www:/var/www/certbot
+      - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro
     depends_on:
       - n8n
       - langchain
-
-  certbot:
-    image: certbot/certbot
-    volumes:
-      - certbot_conf:/etc/letsencrypt
-      - certbot_www:/var/www/certbot
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
 volumes:
   postgres_data:
   n8n_data:
   redis_data:
-  certbot_conf:
-  certbot_www:
