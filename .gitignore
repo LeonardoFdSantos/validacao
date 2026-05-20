@@ -1,0 +1,27 @@
+# Validação Server
+.env
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+venv/
+.venv/
+
+# Docker volumes (local)
+postgres_data/
+n8n_data/
+redis_data/
+
+# SSL certs (gerados no servidor)
+certbot/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
