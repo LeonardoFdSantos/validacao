@@ -1,0 +1,3 @@
+seu-dominio.com.br {
+    reverse_proxy 151.244.40.164:80
+}
